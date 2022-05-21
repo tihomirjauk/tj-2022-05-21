@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -35,4 +35,44 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.args {
+  padding: 5px 15px;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+input,
+button,
+select {
+  border: solid 1px #61dafb;
+  font-size: 14px;
+  padding: 5px 15px;
+  color: #282c34;
+  background-color: #fff;
+}
+button {
+  background-color: rgb(112, 173, 189);
+}
+
+.row {
+  display: block;
+  padding: 1rem;
+  padding-left: 10px;
+  margin-left: 10px;
+  border-left: solid 2px #282c34;
+  transition: all 0.2s;
+}
+
+.ArgumentBuilder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ArgumentBuilder li {
+  padding: 10px;
 }
