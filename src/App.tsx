@@ -29,8 +29,7 @@ const chipStyle = (value: string) => {
 }
 
 const defaultArgs: Args = {
-  Argument1: true,
-  Something: false
+  Argument1: true
 }
 
 function App() {
