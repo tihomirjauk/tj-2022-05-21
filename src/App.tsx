@@ -69,13 +69,11 @@ function App() {
         <Grid item sm={12}>
           <Card sx={{ backgroundColor: "#eee" }}>
             <CardContent>
-              <Typography variant="body1">
-                <span>Result: </span>
-                <Chip
-                  label={evaluationResult}
-                  sx={chipStyle(evaluationResult)}
-                />
-              </Typography>
+              <Typography variant="body1">Result: </Typography>
+              <Chip
+                label={evaluationResult}
+                sx={chipStyle(evaluationResult)}
+              />
             </CardContent>
           </Card>
         </Grid>
