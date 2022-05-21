@@ -60,30 +60,5 @@ describe('Render app', () => {
       ]
     }
     expect(evaluateOperation(op, args10)).toBeTruthy();
-
-
-
-
-    /*
-        // AND
-        const op1: Operation = { name: Operator.AND, args: args11 }
-        expect(evaluateOperation(op1, op1.args)).toBeTruthy();
-    
-        const op2: Operation = { name: Operator.AND, args: args10 }
-        expect(evaluateOperation(op2, op2.args)).toBeFalsy();
-    
-        const op3: Operation = { name: Operator.AND, args: args00 }
-        expect(evaluateOperation(op3, op3.args)).toBeTruthy();
-    
-        // OR
-        const op4: Operation = { name: Operator.OR, args: args11 }
-        expect(evaluateOperation(op4, op4.args)).toBeTruthy();
-    
-        const op5: Operation = { name: Operator.OR, args: args10 }
-        expect(evaluateOperation(op5, op5.args)).toBeTruthy();
-    
-        const op6: Operation = { name: Operator.OR, args: args00 }
-        expect(evaluateOperation(op6, op6.args)).toBeFalsy();
-    */
   });
 })

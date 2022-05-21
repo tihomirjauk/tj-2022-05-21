@@ -18,14 +18,8 @@ function OperationNot(props: {
     }
 
     const changeOperationName = (selected: string): void => {
-        if (selected === "or" && value.params) {
-            onChange({ name: "or", params: value.params })
-        }
-        if (selected === "and" && value.params) {
-            onChange({ name: "and", params: value.params })
-        }
-        if (selected === "not" && value.params) {
-            onChange({ name: "not", params: [value.params[0]] })
+        if ((selected === "and" || selected === "or" || selected === "not") && value.params) {
+            onChange({ name: selected, params: value.params })
         }
     }
 
@@ -34,7 +28,7 @@ function OperationNot(props: {
             <Select value={value.name} onChange={changeOperationName} options={booleanOperationOptions} />
             <RemoveButton onChange={onChange} />
             {value.params.map((param, index) => {
-                return (<OperationBuilder args={args} value={param} onChange={changeOperation(index)} />)
+                return (<OperationBuilder key={`ob-${index}`} args={args} value={param} onChange={changeOperation(index)} />)
             })}
         </div>
     )

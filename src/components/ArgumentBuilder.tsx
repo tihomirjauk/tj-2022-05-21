@@ -1,5 +1,6 @@
 import { Args } from 'types'
 import Select, { booleanOptions } from 'components/Select';
+import { Button, Input } from '@mui/material'
 
 function ArgumentBuilder(props: {
     args: Args,
@@ -31,7 +32,8 @@ function ArgumentBuilder(props: {
                 {Object.keys(args).map((argName, index) => {
                     return (
                         <li key={`arg-${index}`}>
-                            <input type="text" value={argName} onChange={changeArgumentName(argName)} placeholder="Enter arg.name" />
+                            <Input type="text" value={argName} onChange={changeArgumentName(argName)} placeholder="Enter arg.name" />
+                            |
                             <Select
                                 value={args[argName]}
                                 onChange={selectArgumentValue(argName)}
@@ -41,7 +43,7 @@ function ArgumentBuilder(props: {
                     );
                 })}
                 <li>
-                    <button onClick={addArgument}>+ add arg</button>
+                    <Button variant="outlined" onClick={addArgument}>+ add arg</Button>
                 </li>
             </ul>
         </div>

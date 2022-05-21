@@ -6,15 +6,29 @@ import { EmptyOperation, evaluateOperation } from "operations"
 import ArgumentBuilder from "components/ArgumentBuilder"
 import OperationBuilder from 'operations/OperationBuilder'
 
-import './App.css'
+import { Card, CardContent, Chip, Grid, Paper, Typography } from '@mui/material';
 
-const message = {
+import './App.css'
+interface Dict {
+  [key: string]: string;
+}
+const message: Dict = {
   UNDEFINED: "UNDEFINED - please select all arguments",
   TRUE: "TRUE",
   FALSE: "FALSE"
 }
 
-const defaultArgs = {
+const chipStyle = (value: string) => {
+  if (value === message.TRUE) {
+    return { color: "#fff", backgroundColor: "#393" }
+  }
+  if (value === message.FALSE) {
+    return { color: "#fff", backgroundColor: "#933" }
+  }
+  return { color: "#fff", backgroundColor: "#444" }
+}
+
+const defaultArgs: Args = {
   Argument1: true,
   Something: false
 }
@@ -40,18 +54,33 @@ function App() {
   const changeOperation = (value: Operation) => { setOperation(value) }
 
   return (
-    <div className="App">
+    <Paper>
       {/* todo: use <OperationBuilder> and have an interface
       for entering arguments and seeing the result */}
-      <ArgumentBuilder args={args} onChange={changeArguments} />
+      <Grid container spacing={4}>
+        <Grid item sm={12}>
+          <ArgumentBuilder args={args} onChange={changeArguments} />
+        </Grid>
 
-      <OperationBuilder args={args} value={operation} onChange={changeOperation} />
+        <Grid item sm={12}>
+          <OperationBuilder args={args} value={operation} onChange={changeOperation} />
+        </Grid>
 
-      <div className="row">
-        <span>Result: {evaluationResult}</span>
-      </div>
-
-    </div>
+        <Grid item sm={12}>
+          <Card sx={{ backgroundColor: "#eee" }}>
+            <CardContent>
+              <Typography variant="body1">
+                <span>Result: </span>
+                <Chip
+                  label={evaluationResult}
+                  sx={chipStyle(evaluationResult)}
+                />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Paper>
   );
 }
 

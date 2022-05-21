@@ -1,3 +1,4 @@
+import { NativeSelect, } from "@mui/material";
 
 export type Option = {
     label: string,
@@ -20,11 +21,11 @@ function Select(props: {
     }
 
     return (
-        <select defaultValue={value} onChange={handleChange}>
+        <NativeSelect size="small" value={value} onChange={handleChange}>
             {options.map((option, index) => {
                 return (<option key={`option-${index}`} value={option.value} >{option.label}</option>)
             })}
-        </select>
+        </NativeSelect>
     )
 }
 

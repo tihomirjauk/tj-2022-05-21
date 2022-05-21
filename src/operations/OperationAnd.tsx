@@ -2,7 +2,7 @@ import { Args, Operation } from 'types'
 import OperationBuilder from './OperationBuilder'
 import Select, { booleanOperationOptions } from 'components/Select'
 import RemoveButton from 'components/RemoveButton'
-
+import { Button } from '@mui/material';
 
 function OperationAnd(props: {
     value: Operation,
@@ -20,16 +20,9 @@ function OperationAnd(props: {
         nextValue.params[index] = operation
         onChange(nextValue)
     }
-
     const changeOperationName = (selected: string): void => {
-        if (selected === "or" && value.params) {
-            onChange({ name: "or", params: value.params })
-        }
-        if (selected === "and" && value.params) {
-            onChange({ name: "and", params: value.params })
-        }
-        if (selected === "not" && value.params) {
-            onChange({ name: "not", params: [value.params[0]] })
+        if ((selected === "and" || selected === "or" || selected === "not") && value.params) {
+            onChange({ name: selected, params: value.params })
         }
     }
 
@@ -38,9 +31,9 @@ function OperationAnd(props: {
             <Select value={value.name} onChange={changeOperationName} options={booleanOperationOptions} />
             <RemoveButton onChange={onChange} />
             {value.params.map((param, index) => {
-                return (<OperationBuilder args={args} value={param} onChange={changeOperation(index)} />)
+                return (<OperationBuilder key={`ob-${index}`} args={args} value={param} onChange={changeOperation(index)} />)
             })}
-            <button onClick={addOperation}>+ add op</button>
+            <Button variant="outlined" onClick={addOperation}>+ add op</Button>
         </div>
     )
 }
